@@ -18,3 +18,6 @@ list(REMOVE_ITEM PLT_FILES ${FILE_TO_REMOVE})
 add_library(asio-sdk STATIC ${SRC_FILES} ${PLT_FILES})
 target_compile_definitions(asio-sdk PRIVATE __ASIODRIVER_FWD_DEFINED__)
 target_include_directories(asio-sdk PUBLIC asio/common asio/host asio/host/pc)
+
+add_library(asio-link STATIC asio-link/helpers.hpp asio-link/helpers.cpp)
+target_link_libraries(asio-link PUBLIC asio-sdk)
